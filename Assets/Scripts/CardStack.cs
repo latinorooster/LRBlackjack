@@ -139,4 +139,8 @@ public class CardStack : MonoBehaviour {
         return CardValue() > 21;
     }
 
+    public void Reset()
+    {
+        cards.Clear();
+    }
 }
