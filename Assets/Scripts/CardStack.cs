@@ -94,8 +94,7 @@ public class CardStack : MonoBehaviour {
 
     public void Push(Card card)
     {
-        cards.Add(card);
-        
+        cards.Add(card);        
     }
 
     public int CardValue()
@@ -118,19 +117,16 @@ public class CardStack : MonoBehaviour {
                 aces++;
             }
 
-            for (int i = 0; i < aces; i++)
-            {
-                if (total + 11 <= 21)
-                {
-                    total += 11;
-                }
-                else
-                {
-                    total += 1;
-                }
-            }
         }
-       
+
+        if (total + aces + 10 <= 21 && aces > 0)
+        {
+            total += aces + 10;
+        }
+        else
+        {
+            total += aces;
+        }
         return total;
     }
 
