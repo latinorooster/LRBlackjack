@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Card))]
+
 public class CardView : MonoBehaviour {
 
     public GameObject Card { get; private set; }
     SpriteRenderer spriteRenderer;
-    Sprite[] faces;
+    public Sprite[] faces;
     public int cardIndex;
 
     public CardView(GameObject card)
@@ -18,6 +18,7 @@ public class CardView : MonoBehaviour {
     public void ShowCard()
     {
         spriteRenderer.sprite = faces[cardIndex%52];
+        Debug.Log("Shown");
     }
 
     void Awake()

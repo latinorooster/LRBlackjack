@@ -95,6 +95,7 @@ public class CardStack : MonoBehaviour {
     public void Push(Card card)
     {
         cards.Add(card);
+        Debug.Log(card.CardIndex);
         
     }
 

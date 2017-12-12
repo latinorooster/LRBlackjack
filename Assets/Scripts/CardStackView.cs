@@ -19,7 +19,7 @@ public class CardStackView : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        ShowCards();
 	}
 
     void Awake()
@@ -27,7 +27,7 @@ public class CardStackView : MonoBehaviour {
         fetchedCards = new Dictionary<int, CardView>();
         deck = GetComponent<CardStack>();
         ShowCards();
-
+        
         //deck.Car
     }
 
@@ -39,10 +39,11 @@ public class CardStackView : MonoBehaviour {
         }
 
         int cardCount = 0;
-
+        
         if (deck.HasCards)
         {
-            foreach(Card c in deck.GetCards())
+            Debug.Log("Yes");
+            foreach (Card c in deck.GetCards())
             {
                 float co = offsetPosition * cardCount;
                 Vector3 temp = startPosition + new Vector3(co, 0f);
@@ -54,20 +55,23 @@ public class CardStackView : MonoBehaviour {
 
     void AddCard(Vector3 position, int cardIndex, int positionalIndex)
     {
+        
         if (fetchedCards.ContainsKey(cardIndex))
         {
+            CardView cardViewExisting = fetchedCards[cardIndex].Card.GetComponent<CardView>();
+            cardViewExisting.ShowCard();
+
             return;
         }
 
         GameObject cardCopy = (GameObject)Instantiate(cardPrefab);
         cardCopy.transform.position = position;
 
-        Card card = cardCopy.GetComponent<Card>();
-        card.CardIndex = cardIndex;
-        card.Suit = (Card.SuitType)((cardIndex % 52) / 13);
-        card.Value = (cardIndex % 52) % 13;
-
-        SpriteRenderer spriteRenderer = cardCopy.GetComponent<SpriteRenderer>();
+        CardView cardView = cardCopy.GetComponent<CardView>();
+        cardView.cardIndex=cardIndex;
+        cardView.ShowCard();
+        
+        //SpriteRenderer spriteRenderer = cardCopy.GetComponent<SpriteRenderer>();
 
         fetchedCards.Add(cardIndex, new CardView(cardCopy));
 
