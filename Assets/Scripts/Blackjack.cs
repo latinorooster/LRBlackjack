@@ -22,8 +22,6 @@ public class Blackjack : MonoBehaviour {
     {
         deck.CreateDeck(6);
         Deal();
-        Debug.Log(dealer.CardValue());
-        Debug.Log(player.CardValue());
     }
 
     void Deal()
@@ -31,5 +29,35 @@ public class Blackjack : MonoBehaviour {
         player.Push(deck.Pop());
         dealer.Push(deck.Pop());
         player.Push(deck.Pop());
+    }
+
+    public void Hit()
+    {
+        player.Push(deck.Pop());
+        if (player.IsBusted())
+        {
+            //Do Something
+        }
+    }
+
+    public void Stand()
+    {
+        StartCoroutine(DealersTurn());
+    }
+
+    IEnumerator DealersTurn()
+    {
+        while (dealer.CardValue() < 17)
+        {
+            dealer.Push(deck.Pop());
+            yield return new WaitForSeconds(1f);
+        }
+
+        if (dealer.IsBusted())
+        {
+            //Do Something
+        }
+
+        yield return new WaitForSeconds(1f);
     }
 }

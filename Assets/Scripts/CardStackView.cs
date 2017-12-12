@@ -70,7 +70,8 @@ public class CardStackView : MonoBehaviour {
         cardView.cardIndex=cardIndex;
         cardView.ShowCard();
         
-        //SpriteRenderer spriteRenderer = cardCopy.GetComponent<SpriteRenderer>();
+        SpriteRenderer spriteRenderer = cardCopy.GetComponent<SpriteRenderer>();
+        spriteRenderer.sortingOrder = positionalIndex;
 
         fetchedCards.Add(cardIndex, new CardView(cardCopy));
 

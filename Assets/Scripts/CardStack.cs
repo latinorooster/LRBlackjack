@@ -134,4 +134,9 @@ public class CardStack : MonoBehaviour {
         return total;
     }
 
+    public bool IsBusted()
+    {
+        return CardValue() > 21;
+    }
+
 }
