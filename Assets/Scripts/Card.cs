@@ -18,7 +18,7 @@ public class Card
     {
         CardIndex = cardIndex;
         Suit = (SuitType)((cardIndex % 52) / 13);
-        Value = (cardIndex % 52) % 13;
+        Value = ((cardIndex % 52) % 13) + 2;
         
     }
 }

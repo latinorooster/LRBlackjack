@@ -22,7 +22,8 @@ public class Blackjack : MonoBehaviour {
     {
         deck.CreateDeck(6);
         Deal();
-        
+        Debug.Log(dealer.CardValue());
+        Debug.Log(player.CardValue());
     }
 
     void Deal()

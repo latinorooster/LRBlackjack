@@ -18,7 +18,6 @@ public class CardView : MonoBehaviour {
     public void ShowCard()
     {
         spriteRenderer.sprite = faces[cardIndex%52];
-        Debug.Log("Shown");
     }
 
     void Awake()

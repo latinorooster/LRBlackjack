@@ -42,7 +42,6 @@ public class CardStackView : MonoBehaviour {
         
         if (deck.HasCards)
         {
-            Debug.Log("Yes");
             foreach (Card c in deck.GetCards())
             {
                 float co = offsetPosition * cardCount;
