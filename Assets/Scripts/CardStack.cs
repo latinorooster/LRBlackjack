@@ -7,8 +7,7 @@ public class CardStack : MonoBehaviour {
 
     List<Card> cards;
     public bool isDeck;
-    public Vector3 startPosition;
-    public float offsetPosition;
+
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +22,19 @@ public class CardStack : MonoBehaviour {
     void Awake()
     {
         cards = new List<Card>();
+    }
+
+    public bool HasCards
+    {
+        get { return cards != null && cards.Count > 0; }
+    }
+
+    public IEnumerable<Card> GetCards()
+    {
+        foreach(Card c in cards)
+        {
+            yield return c;
+        }
     }
 
     public int CardCount

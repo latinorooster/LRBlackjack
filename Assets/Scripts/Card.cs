@@ -9,7 +9,7 @@ public class Card
 
     public enum SuitType
     {
-        Diamonds, Clubs, Hearts, Spades
+        Hearts, Diamonds, Clubs, Spades
     }
 
     public SuitType Suit;
