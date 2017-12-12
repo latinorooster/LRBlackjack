@@ -7,6 +7,8 @@ public class CardStack : MonoBehaviour {
 
     List<Card> cards;
     public bool isDeck;
+    public Vector3 startPosition;
+    public float offsetPosition;
 
 	// Use this for initialization
 	void Start () {
