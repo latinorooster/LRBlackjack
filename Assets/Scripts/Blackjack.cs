@@ -10,6 +10,8 @@ public class Blackjack : MonoBehaviour {
     //public CardStack player;
     public Player player;
 
+    public GameObject playerPrefab;
+
     public Button hitButton;
     public Button standButton;
     public Button playAgainButton;
@@ -31,8 +33,14 @@ public class Blackjack : MonoBehaviour {
 
     void StartGame()
     {
+        GameObject playerCopy = (GameObject)Instantiate(playerPrefab);
+        player = playerCopy.GetComponent<Player>();
+        //newPlayer.SetSeatPosition(0);
+
         deck.CreateDeck(6);
         Deal();
+
+
     }
 
     void Deal()

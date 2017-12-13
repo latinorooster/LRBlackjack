@@ -8,11 +8,10 @@ public class CardStack : MonoBehaviour {
     List<Card> cards;
     public bool isDeck;
 
-
 	// Use this for initialization
 	void Start () {
-		
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -127,6 +126,7 @@ public class CardStack : MonoBehaviour {
         {
             total += aces;
         }
+
         return total;
     }
 
