@@ -7,7 +7,8 @@ public class Blackjack : MonoBehaviour {
 
     public CardStack deck;
     public CardStack dealer;
-    public CardStack player;
+    //public CardStack player;
+    public Player player;
 
     public Button hitButton;
     public Button standButton;
@@ -41,16 +42,16 @@ public class Blackjack : MonoBehaviour {
         player.Push(deck.Pop());
 
         dealerScore.text = dealer.CardValue().ToString();
-        playerScore.text = player.CardValue().ToString();
+        playerScore.text = player.HandValue().ToString();
     }
 
     public void Hit()
     {
         player.Push(deck.Pop());
 
-        playerScore.text = player.CardValue().ToString();
+        playerScore.text = player.HandValue().ToString();
 
-        if (player.IsBusted())
+        if (player.HandValue() > 21)
         {
             winnerText.text = "You Lose";
             hitButton.interactable = false;
@@ -83,11 +84,11 @@ public class Blackjack : MonoBehaviour {
 
     void GetWinner()
     {
-        if (player.CardValue() > dealer.CardValue() || dealer.CardValue() > 21)
+        if (player.HandValue() > dealer.CardValue() || dealer.CardValue() > 21)
         {
             winnerText.text = "You Win";
         }
-        else if (player.CardValue() == dealer.CardValue())
+        else if (player.HandValue() == dealer.CardValue())
         {
             winnerText.text = "Draw";
         }
@@ -106,7 +107,7 @@ public class Blackjack : MonoBehaviour {
         dealerScore.text = "";
         playerScore.text = "";
 
-        player.GetComponent<CardStackView>().Clear();
+        player.GetComponent<Player>().Clear();
         dealer.GetComponent<CardStackView>().Clear();
         Deal();
     }
