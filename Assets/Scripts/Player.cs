@@ -5,8 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public CardStack cards;
+    public int seat;
 
-    Vector3[] seatPositions = new[] { new Vector3(5.296f, -.441274f, 0.548f) };
+    Vector3[] seatPositions = new[] { new Vector3(5.296f, -.441274f, 0.548f), new Vector3(4.64f, -0.4312742f, 0.245f) };
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +26,7 @@ public class Player : MonoBehaviour {
 
     public void SetSeatPosition(int seat)
     {
-        cards.GetComponent<CardStackView>().startPosition = seatPositions[0];
+        cards.GetComponent<CardStackView>().startPosition = seatPositions[seat];
     }
 
     public void Push(Card card)
