@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
     public CardStack cards;
     public int seat;
 
-    Vector3[] seatPositions = new[] { new Vector3(5.296f, -.441274f, 0.548f), new Vector3(4.64f, -0.4312742f, 0.245f) };
+    Vector3[] seatPositions = new[] { new Vector3(5.296f, -.441274f, 0.548f), new Vector3(4.64f, -0.4312742f, 0.245f), new Vector3(3.958f, -0.4412742f, 0.601f) };
 
 	// Use this for initialization
 	void Start () {

@@ -13,12 +13,14 @@ public class Blackjack : MonoBehaviour {
     List<Player> players;
     int currentPlayer;
     int waitingPlayers = 0;
+    private static int MAX_PLAYERS = 3;
 
     public GameObject playerPrefab;
 
     public Button hitButton;
     public Button standButton;
     public Button playAgainButton;
+    public Button addPlayerButton;
 
 
     public Text winnerText;
@@ -178,7 +180,7 @@ public class Blackjack : MonoBehaviour {
         {
             GameObject playerCopy = (GameObject)Instantiate(playerPrefab);
             Player newPlayer = playerCopy.GetComponent<Player>();
-            newPlayer.SetSeatPosition(1);
+            newPlayer.SetSeatPosition(NumberOfPlayers());
             players.Add(newPlayer);
 
             waitingPlayers--;
@@ -189,6 +191,15 @@ public class Blackjack : MonoBehaviour {
 
     public void AddPlayer()
     {
-        waitingPlayers++;
+        if (waitingPlayers + NumberOfPlayers() < MAX_PLAYERS)
+        {
+            waitingPlayers++;
+        }
+
+        if (waitingPlayers+NumberOfPlayers() == MAX_PLAYERS)
+        {
+            addPlayerButton.interactable = false;
+        }
+        
     }
 }
